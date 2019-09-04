@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../WebAudio/jquery-3.4.1.js"></script>
+    <script src="../WebAudio/jquery-ui.min.js"></script>
+    <script src="audioContext.js"></script>
+    <script src= "audioFileLoader.js"></script>
+    <script src = "scheduler_template.js"></script>
+    
+    <style>
+
+            .drumPad
+            {
+                display: inline-block;
+            }
+        
+            #play-button
+            {
+                margin: 10px;
+                float: bottom;
+                text-align: center;
+                height:100px;
+                width:100px;
+                color : blue;
+                background-color: red;
+            }
+            #drumPad-track1
+            {
+                margin: 10px;
+                float: left;
+                text-align: center;
+                height:100px;
+                width:100px;
+                color : blue;
+                background-color: greenyellow;
+            }
+            #drumPad-track2
+            {
+                margin: 10px;
+                float: left;
+                text-align: center;
+                height:100px;
+                width:100px;
+                color : blue;
+                background-color: greenyellow;
+            }
+            #drumPad-track3
+            {
+                margin: 10px;
+                float: left;
+                text-align: center;
+                height:100px;
+                width:100px;
+                color : blue;
+                background-color: greenyellow;
+            }
+        
+            #drumPad-track4
+            {
+                margin: 10px;
+                float: left;
+                text-align: center;
+                height:100px;
+                width:100px;
+                color : blue;
+                background-color: greenyellow;
+            }
+            .grid
+            {
+                width:50px;
+                height:50px;
+                background-color:grey
+            }
+            .grid1
+            {
+                display: inline-block;   
+            }
+        
+            .grid2
+            {
+                display: inline-block;   
+            }
+        
+            .grid3
+            {
+                display: inline-block;   
+            }
+        
+            .grid4
+            {
+                display: inline-block;   
+            }
+        
+            .grid5
+            {
+                display: inline-block;   
+            }
+        
+            </style>
+</head>
+<body>
+
+<div class="tracks">
+   
+    <div class= "track-name">Metronome</div>
+    <div id=track0>
+    <div class="grid grid1" id= "metro-1"></div>    
+    <div class="grid grid1" id= "metro-2"></div>    
+    <div class="grid grid1" id= "metro-3"></div>    
+    <div class="grid grid1" id= "metro-4"></div>    
+    <div class="grid grid1" id= "metro-5"></div>    
+    <div class="grid grid1" id= "metro-6"></div>    
+    <div class="grid grid1" id= "metro-7"></div>    
+    <div class="grid grid1" id= "metro-8"></div>    
+    <div class="grid grid1" id= "metro-9"></div>    
+    <div class="grid grid1" id= "metro-10"></div>    
+    <div class="grid grid1" id= "metro-11"></div>    
+    <div class="grid grid1" id= "metro-12"></div>    
+    <div class="grid grid1" id= "metro-13"></div>    
+    <div class="grid grid1" id= "metro-14"></div>    
+    <div class="grid grid1" id= "metro-15"></div>    
+    <div class="grid grid1" id= "metro-16"></div> 
+    </div>   
+
+    <div class= "track-name">Kick</div>
+    <div id=track1>
+    <div class="grid grid2" id= "kick-1"></div>    
+    <div class="grid grid2" id= "kick-2"></div>    
+    <div class="grid grid2" id= "kick-3"></div>    
+    <div class="grid grid2" id= "kick-4"></div>    
+    <div class="grid grid2" id= "kick-5"></div>    
+    <div class="grid grid2" id= "kick-6"></div>    
+    <div class="grid grid2" id= "kick-7"></div>    
+    <div class="grid grid2" id= "kick-8"></div>    
+    <div class="grid grid2" id= "kick-9"></div>    
+    <div class="grid grid2" id= "kick-10"></div>    
+    <div class="grid grid2" id= "kick-11"></div>    
+    <div class="grid grid2" id= "kick-12"></div>    
+    <div class="grid grid2" id= "kick-13"></div>    
+    <div class="grid grid2" id= "kick-14"></div>    
+    <div class="grid grid2" id= "kick-15"></div>    
+    <div class="grid grid2" id= "kick-16"></div> 
+    </div>   
+
+    <div class= "track-name">snare</div>
+    <div id=track2>
+    <div class="grid grid3" id= "snare-1"></div>    
+    <div class="grid grid3" id= "snare-2"></div>    
+    <div class="grid grid3" id= "snare-3"></div>    
+    <div class="grid grid3" id= "snare-4"></div>    
+    <div class="grid grid3" id= "snare-5"></div>    
+    <div class="grid grid3" id= "snare-6"></div>    
+    <div class="grid grid3" id= "snare-7"></div>    
+    <div class="grid grid3" id= "snare-8"></div>    
+    <div class="grid grid3" id= "snare-9"></div>    
+    <div class="grid grid3" id= "snare-10"></div>    
+    <div class="grid grid3" id= "snare-11"></div>    
+    <div class="grid grid3" id= "snare-12"></div>    
+    <div class="grid grid3" id= "snare-13"></div>    
+    <div class="grid grid3" id= "snare-14"></div>    
+    <div class="grid grid3" id= "snare-15"></div>    
+    <div class="grid grid3" id= "snare-16"></div> 
+    </div>   
+
+    <div class= "track-name">Hat</div>
+    <div id=track3>
+    <div class="grid grid4" id= "Hat-1"></div>    
+    <div class="grid grid4" id= "Hat-2"></div>    
+    <div class="grid grid4" id= "Hat-3"></div>    
+    <div class="grid grid4" id= "Hat-4"></div>    
+    <div class="grid grid4" id= "Hat-5"></div>    
+    <div class="grid grid4" id= "Hat-6"></div>    
+    <div class="grid grid4" id= "Hat-7"></div>    
+    <div class="grid grid4" id= "Hat-8"></div>    
+    <div class="grid grid4" id= "Hat-9"></div>    
+    <div class="grid grid4" id= "Hat-10"></div>    
+    <div class="grid grid4" id= "Hat-11"></div>    
+    <div class="grid grid4" id= "Hat-12"></div>    
+    <div class="grid grid4" id= "Hat-13"></div>    
+    <div class="grid grid4" id= "Hat-14"></div>    
+    <div class="grid grid4" id= "Hat-15"></div>    
+    <div class="grid grid4" id= "Hat-16"></div> 
+    </div>   
+
+    <div class= "track-name">Shaker</div>
+    <div id=track4>
+    <div class="grid grid5" id= "shake-1"></div>    
+    <div class="grid grid5" id= "shake-2"></div>    
+    <div class="grid grid5" id= "shake-3"></div>    
+    <div class="grid grid5" id= "shake-4"></div>    
+    <div class="grid grid5" id= "shake-5"></div>    
+    <div class="grid grid5" id= "shake-6"></div>    
+    <div class="grid grid5" id= "shake-7"></div>    
+    <div class="grid grid5" id= "shake-8"></div>    
+    <div class="grid grid5" id= "shake-9"></div>    
+    <div class="grid grid5" id= "shake-10"></div>    
+    <div class="grid grid5" id= "shake-11"></div>    
+    <div class="grid grid5" id= "shake-12"></div>    
+    <div class="grid grid5" id= "shake-13"></div>    
+    <div class="grid grid5" id= "shake-14"></div>    
+    <div class="grid grid5" id= "shake-15"></div>    
+    <div class="grid grid5" id= "shake-16"></div> 
+    </div>   
+</div>
+
+    
+    <div class= "drumPad" id = "play-button">Play/Stop</div>
+    <div class="drumPad" id = "drumPad-track1">Kick</div>
+    <div class="drumPad" id = "drumPad-track2">Snare</div>
+    <div class="drumPad" id = "drumPad-track3">Hats</div>
+    <div class="drumPad" id = "drumPad-track4">Shaker</div>
+    
+    </div>
+    
+</body>
+</html>
